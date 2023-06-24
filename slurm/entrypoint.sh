@@ -103,12 +103,12 @@ then
         sleep 2
     done
 
-    accts=$(sacctmgr list -P associations cluster=hpc format=Account,Cluster,User,Fairshare | wc -l)
+    accts=$(sacctmgr list -P associations cluster=quest format=Account,Cluster,User,Fairshare | wc -l)
     if [[ $accts -eq 3 ]]; then
         echo "Creating slurm associations.."
-        sacctmgr -i add account staff Cluster=hpc Description=staff
+        sacctmgr -i add account a9009 Cluster=quest Description=a9009
         sacctmgr -i add user hpcadmin DefaultAccount=staff AdminLevel=Admin
-        sacctmgr -i add account sfoster Cluster=hpc Description="PI account sfoster"
+        sacctmgr -i add account sfoster Cluster=quest Description="PI account sfoster"
         sacctmgr -i add user sfoster DefaultAccount=sfoster
         sacctmgr -i add user astewart DefaultAccount=sfoster
         scontrol reconfigure

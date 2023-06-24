@@ -12,14 +12,13 @@ mkdir -p /etc/ood/config/clusters.d
 mkdir -p /etc/ood/config/apps/shell
 mkdir -p /etc/ood/config/apps/bc_desktop
 mkdir -p /etc/ood/config/apps/dashboard
+mkdir -p /etc/ood/config/apps/dashboard/views
 mkdir -p /etc/ood/config/apps/myjobs/templates
+mkdir -p /etc/ood/config/ondemand.d
 echo "DEFAULT_SSHHOST=frontend" > /etc/ood/config/apps/shell/env
 echo "OOD_DEFAULT_SSHHOST=frontend" >> /etc/ood/config/apps/shell/env
 echo "OOD_SSHHOST_ALLOWLIST=ondemand:cpn01:cpn02" >> /etc/ood/config/apps/shell/env
-echo "OOD_DEV_SSH_HOST=ondemand" >> /etc/ood/config/apps/dashboard/env
-echo "MOTD_PATH=/etc/motd" >> /etc/ood/config/apps/dashboard/env
-echo "MOTD_FORMAT=markdown" >> /etc/ood/config/apps/dashboard/env
-echo "OOD_BC_DYNAMIC_JS=1" >> /etc/ood/config/apps/dashboard/env
+
 
 log_info "Configuring Ondemand ood_portal.yml .."
 
@@ -38,6 +37,7 @@ ssl:
 node_uri: "/node"
 rnode_uri: "/rnode"
 oidc_scope: "openid profile email groups"
+dex_uri: false
 dex:
   client_redirect_uris:
     - "https://localhost:4443/simplesaml/module.php/authoidcoauth2/linkback.php"
@@ -84,7 +84,6 @@ rm -rf /var/cache/dnf
 
 log_info "Cloning repos to assist with app development.."
 mkdir -p /var/git
-git clone https://github.com/OSC/bc_example_jupyter.git --bare /var/git/bc_example_jupyter
 git clone https://github.com/OSC/ood-example-ps.git --bare /var/git/ood-example-ps
 
 log_info "Enabling app development for hpcadmin..."

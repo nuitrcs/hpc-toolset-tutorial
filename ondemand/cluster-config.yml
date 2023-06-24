@@ -1,19 +1,19 @@
 ---
 v2:
   metadata:
-    title: "HPC Cluster"
+    title: "Quest Cluster"
   login:
     host: "frontend"
   job:
     adapter: "slurm"
-    cluster: "hpc"
+    cluster: "quests"
     bin: "/usr/bin"
     conf: "/etc/slurm/slurm.conf"
   batch_connect:
     vnc:
       script_wrapper: |
         export PATH="/opt/TurboVNC/bin:$PATH"
-        export WEBSOCKIFY_CMD="/usr/bin/websockify"
+        export WEBSOCKIFY_CMD="/usr/local/bin/websockify"
         %s
   custom:
     xdmod:

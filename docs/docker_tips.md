@@ -11,14 +11,14 @@ $ git clone https://github.com/ubccr/hpc-toolset-tutorial.git
 $ cd hpc-toolset-tutorial
 ```
 
-Ensure you have pulled all the latest changes. This is very important as lots
+If you have previously cloned the repo, pull all the latest changes. This is very important as lots
 has changed from previous years:
 
 ```
 $ git pull
 ```
 
-This step is optional, only run this if you've previosly run our tutorial and
+This step is optional: only run this if you've previously run our tutorial and
 need to remove any old containers, volumes, and images. You can also run this
 if you need to start completely fresh. NOTE: this will delete all the hpcts
 container images and you will need to re-download them:
@@ -35,7 +35,7 @@ $ ./hpcts start
 
 ### If something goes wrong...
 
-First, thing to try is stopping the containers, removing the volumes and re-starting:
+First thing to try is stopping the containers, removing the volumes and re-starting:
 
 ```
 $ ./hpcts destroy
@@ -46,30 +46,29 @@ $ ./hpcts start
 
 - [Docker](https://docs.docker.com)
 - [Install & Start Docker](https://docs.docker.com/engine/install/)
-- [Install Docker Compose](https://docs.docker.com/compose/install/)
-- [Linux](https://docs.docker.com/engine/install/linux-postinstall/) 
+- [Linux & Windows Subsystem for Linux](https://docs.docker.com/engine/install/linux-postinstall/) 
 - [MacOS Docker Desktop](https://docs.docker.com/docker-for-mac/troubleshoot/)  
-- [Windows Docker Desktop](https://docs.docker.com/docker-for-windows/troubleshoot/)
 
 ### Helpful Docker commands
 
 ```
 # Start all HPC Toolset Containers manually
-$ docker-compose up -d
+$ docker compose up -d
 
 # Display Tutorial Container Logs
-$ docker-compose logs -f
-$ docker-compose logs -f coldfront
-$ docker-compose logs -f xdmod
+$ docker compose logs -f
+$ docker compose logs -f coldfront
+$ docker compose logs -f xdmod
+$ docker compose logs -f ondemand
 
 # Stop containers 
-$ docker-compose stop
+$ docker compose stop
 
 # Stop containers and remove them
-$ docker-compose down
+$ docker compose down
 
 # Stop containers,remove them and all volumes
-$ docker-compose down -v
+$ docker compose down -v
 
 # Display Docker processes
 $ docker ps -a
@@ -113,28 +112,6 @@ NOTE: this is only necessary on some systems so don't use it if the previous com
 
 **Sometimes restarting your operating system is the only solution.**
 
-#### Windows Errors  
-
-NOTE: Windows users should get several pop-up messages from Docker Desktop during this process asking to allow local system access to the Docker containers.  Please click the "Share it" button:
-![](windows_sharing.PNG)
-
-If you have notifications blocked, you may not see these pop-ups and the authorization will eventually time out.  If this happens, you will get this type of error message:    
-
-```
-Error response from daemon: user declined directory sharing C:\Users\path_to_my_folder
-```
-Open Docker Desktop, navigate to Settings - Resources, and click on File Sharing.  Then add the directory where you've cloned the HPC Toolset Tutorial and click "Apply & Restart"
-
-Re-run:  
-```
-./hpcts start  
-```
-
-If this doesn't work, please run:  
-```
-./hpcts cleanup  
-./hpcts start  
-```
 
 #### Deleting Docker containers/images/volumes manually
 
