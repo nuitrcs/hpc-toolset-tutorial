@@ -32,7 +32,7 @@ pushd /srv/www
 python3 -mvenv venv
 source venv/bin/activate
 pip install --upgrade pip
-pip install coldfront wheel mysqlclient gunicorn python-ldap ldap3 mozilla_django_oidc django_auth_ldap
+pip install coldfront==1.1.3 wheel mysqlclient gunicorn python-ldap ldap3 mozilla_django_oidc django_auth_ldap
 
 # Adjust nginx
 log_info "Setting up nginx.."

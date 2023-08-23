@@ -55,7 +55,7 @@ services:
       - "3306"
 
   slurmdbd:
-    image: ubccr/hpcts:slurm-${HPCTS_VERSION}
+    #image: ubccr/hpcts:slurm-${HPCTS_VERSION}
     build:
       context: ./slurm
       args:
@@ -155,7 +155,7 @@ services:
       - slurmctld
 
   coldfront:
-    image: ubccr/hpcts:coldfront-${HPCTS_VERSION}
+    #image: ubccr/hpcts:coldfront-${HPCTS_VERSION}
     build:
       context: ./coldfront
       args:
@@ -180,7 +180,7 @@ services:
       - frontend
 
   ondemand:
-    image: ubccr/hpcts:ondemand-${HPCTS_VERSION}
+    #image: ubccr/hpcts:ondemand-${HPCTS_VERSION}
     build:
       context: ./ondemand
       args:

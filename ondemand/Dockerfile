@@ -25,8 +25,7 @@ COPY . /build
 RUN /build/install.sh && rm -rf /build
 COPY cluster-config.yml /etc/ood/config/clusters.d/quests.yml
 RUN git clone https://github.com/nuitrcs/quest_ood_jupyter.git /var/www/ood/apps/sys/quest_ood_jupyter
-COPY python_job_template /etc/ood/config/apps/myjobs/templates/python
-COPY Quest-OpenOnDemand-Configs/config/apps/dashboard/motd /etc/motd
+COPY Quest-OpenOnDemand-Configs/config/apps/dashboard/motd /etc/ood/config/apps/dashboard/motd
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY Quest-OpenOnDemand-Configs/config/apps/dashboard/initializers /etc/ood/config/apps/dashboard/initializers
 COPY themes/hpc-coop /usr/share/ondemand-dex/web/themes/hpc-coop
